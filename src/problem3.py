@@ -3,11 +3,13 @@ Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Jacob Lauteri.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import testing_helper
 import time
+import rosegraphics as rg
+import math
 
 
 def main():
@@ -17,7 +19,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 2.  READ the doc-string for the  sum_of_digits  function defined below.
+# DONE: 2.  READ the doc-string for the  sum_of_digits  function defined below.
 # It is the same  sum_of_digits  function that you have seen before.
 # After you UNDERSTAND the doc-string (JUST the doc-string, NOT the code),
 # ASKING QUESTIONS AS NEEDED, change the above _TODO_ to DONE.
@@ -172,6 +174,11 @@ def problem3a(r, s):
     #    **  use (call) the   sum_of_digits   function
     #    **  that is DEFINED ABOVE.
     ###########################################################################
+    count = 0
+    for k in range(r, s + 1):
+        if(sum_of_digits(k) % 1 > 0):
+            count = count + 1
+    return count
 
 
 def run_test_problem3b():
@@ -261,6 +268,7 @@ def run_test_problem3b():
 
 
 def problem3b(m, r):
+
     """
     What comes in:  A positive integer m and a number r.
     What goes out:
@@ -283,7 +291,10 @@ def problem3b(m, r):
     # TODO: 4. Implement and test this function.
     #          Tests have been written for you (above).
     ###########################################################################
-
+    total = 0
+    for k in range(m):
+        total = total + ((m + k) / ((r + k) ** 1 + k))
+    return total
 
 ###############################################################################
 # Our tests use the following to print error messages in red.

@@ -104,15 +104,18 @@ def problem1(square, thickness, window):
     # TODO: 3. Implement and test this function.  SEE THE PICTURES in the PDF!
     #          Tests have been written for you (above).
     # -------------------------------------------------------------------------
-    length = rg.Square.length_of_each_side
-    point.x = rg.Square.get_bounding_box().x
-    point.y = rg.Square.get_bounding_box().y
-    square = rg.Square(rg.Point(point.x, point.y), length)
+    square = rg.Square(square.get_bounding_box().x, square.get_bounding_box().y, square.length_of_each_side())
+    circle = rg.Circle(rg.Point(square.get_bounding_box().x, square.get_bounding_box().y), square.length_of_each_side)
+    square.fill_color = circle.fill_color
+    square.outline_thickness = circle.outline_thickness
     square.attach_to(window)
-    circle = rg.Circle(rg.Point(point.x, poiint.y), length)
-    circle.fill_color = square.fill_color
-    circle.outline_thickness = square.outline_thickness
-    circle.attach_to(window)
+    circle.attach_to((window))
+    line = rg.Line(rg.Point(circle.get_center), square.get_bounding_box())
+    line.color = square.outline_color
+    line.thickness = thickness
+    line.attach_to(window)
+    window.render()
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
